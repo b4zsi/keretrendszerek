@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "keretrendszerek": {
+      "hosting": {
+        "keretrendszerek": [
+          "keretrendszerek"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "keretrendszerek"
+  }
+}
