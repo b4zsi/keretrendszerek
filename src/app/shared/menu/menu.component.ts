@@ -14,15 +14,15 @@ export class MenuComponent  implements OnInit, AfterViewInit{
 
 
   constructor() {
-    console.log('constructor called.');
+    
   }
 
   ngOnInit(): void {
-    console.log('ngOnInit called.');
+    
   }
 
   ngAfterViewInit(): void {
-    console.log('ngAfterViewInit called.');
+   
   }
 
   menuSwitch() {

@@ -1,18 +1,31 @@
+body{
+    background-color: #3c6542;
+}
 a {
     text-decoration: none;
     color: white;
+    padding: 15px;
+    font-size: 25px;
 }
 
 a:hover, a:active {
-    color: lightgray;
+    color: rgba($color: #3c6542, $alpha: 1.0);
 }
 
 .navigation-items {
     list-style: none;
-    padding: 0;
-    margin: 0;
+    padding-left: 0;
 }
 
 mat-sidenav {
     width: 250px;
+    color: darkolivegreen;
+}
+
+.ng-star-inserted{
+    align-items: center;
+}
+
+.home_icon{
+    z-index: 999;
 }

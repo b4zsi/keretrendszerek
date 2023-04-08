@@ -1,1 +1,15 @@
-<p>Under development...</p>
+<div>
+  <mat-list style="line-height: 10px" *ngIf="this.isPageLoaded">
+    <mat-card *ngFor="let imageObject of this.galleryObject">
+      {{ imageObject.leiras }}
+      {{ imageObject.ar }} Ft
+      <img
+        [src]="imageObject.download_url"
+        alt="af"
+        height="150px"
+        width="200px"
+        style="align-self: flex-end; padding-top: 20px"
+      />
+    </mat-card>
+  </mat-list>
+</div>

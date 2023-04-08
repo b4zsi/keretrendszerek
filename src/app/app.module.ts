@@ -26,11 +26,15 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire/compat';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatCardModule} from '@angular/material/card';
+import { ShopAdminComponent } from './pages/shop-admin/shop-admin.component'
 
 @NgModule({
   declarations : [
     AppComponent,
-    MenuComponent
+    MenuComponent,
+    ShopAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +51,8 @@ import {AngularFireModule} from '@angular/fire/compat';
     MatListModule,
     MatSidenavModule,
     MatToolbarModule,
+    MatSnackBarModule,
+    MatCardModule,
     FlexLayoutModule,
     MatButtonModule,
     ReactiveFormsModule,

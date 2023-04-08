@@ -4,10 +4,13 @@ div {
     justify-content: center;
     text-align: center;
     height: 100%;
-    font-size: 30;
+    font-size: 30px;
     align-items: center;
 }
 
 .main_component {
     height: 100vh;
+}
+.mat-sidenav-container{
+    height:100px;
 }

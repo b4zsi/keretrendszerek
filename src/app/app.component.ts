@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewEncapsulation } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
@@ -7,17 +7,20 @@ import { AuthService } from './shared/services/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit{
   title = 'keretrendszerek';
   page = '';
   routes: Array<string> = [];
   loggedInUser? : firebase.default.User | null;
 
-  constructor(private router: Router, private authService : AuthService) {
+  constructor(private router: Router, private authService : AuthService, private elementRef:ElementRef) {
   }
-
+  ngAfterViewInit(): void {
+    this.elementRef.nativeElement.ownerDocument.body.style
+  }
   ngOnInit() {
     this.routes = this.router.config.map(conf => conf.path) as string[];
 
@@ -30,7 +33,11 @@ export class AppComponent {
 
     this.authService.isUserLoggedIn().subscribe(user=>{
       this.loggedInUser = user;
-    }, error => {console.log(error)})
+      localStorage.setItem('user', JSON.stringify(this.loggedInUser));
+    }, error => {
+      console.log(error);
+      localStorage.setItem('user', JSON.stringify('null'));
+    })
   }
   
   changePage(selectedPage: string) {
