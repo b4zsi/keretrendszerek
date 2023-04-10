@@ -1,2 +1,5 @@
-<p>this is the profile page</p>
-<p>Welcome knev, vnev</p>
+<div>
+  <p *ngIf="this.isLoaded" class="nev">
+    {{ this.user![0].name.firstname }} {{ this.user![0].name.lastname }}
+  </p>
+</div>

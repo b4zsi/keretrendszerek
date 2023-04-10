@@ -4,6 +4,8 @@
     justify-content: center;
     text-align: center;
     height: 100%;
+    background-color: rgba($color: #8c92ac, $alpha: 0.8);
+    background-position: 100%;
 }
 
 .main_component {
@@ -36,4 +38,9 @@ button {
 .loginButton{
     color: orange;
     padding: 10px;
+}
+h1{
+    font-family: main;
+    font-size: 27px;
+    color: white;
 }

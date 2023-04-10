@@ -29,11 +29,12 @@ export class LoginComponent {
   ngOnInit(): void {
   }
   async login() {
+
     if(!this.email.valid) {
-      this.snackBarService.openWithMessage("Rossz email formátum");
+      this.snackBarService.openWithMessage("Helytelen email cím!");
     }
     if(!this.password.valid) {
-      this.snackBarService.openWithMessage("Rossz jelszó formátum");
+      this.snackBarService.openWithMessage("Hibás jelszó!");
     }
     if(!this.email || !this.password){
       this.snackBarService.openWithMessage("Hiányzó adatok!");
@@ -46,6 +47,9 @@ export class LoginComponent {
       }).catch(error=>{
         this.snackBarService.openWithMessage("Hibás email cím vagy jelszó!");
       });
+    }
+    else{
+      this.snackBarService.openWithMessage("Hiányzó adatok!");
     }
     try {
       if(this.email.value && this.password.value){

@@ -1,1 +1,24 @@
-<p>shop-admin works!</p>
+<div>
+  <mat-list style="line-height: 10px" *ngIf="this.isPageLoaded">
+    <mat-card *ngFor="let imageObject of this.galleryObject">
+      {{ imageObject.leiras }}
+      {{ imageObject.ar }} Ft
+      <img
+        [src]="imageObject.download_url"
+        alt="af"
+        height="150px"
+        width="200px"
+        style="align-self: flex-end; padding-top: 20px"
+      />
+      <button mat-stroked-button class="gomb" (click)="this.updateProduct()">
+        Szerkesztés
+      </button>
+      <button mat-stroked-button class="gomb" (click)="this.deleteProduct()">
+        Törlés
+      </button>
+    </mat-card>
+    <button mat-stroked-button class="gomb" (click)="this.addProduct()">
+      Hozzáadás
+    </button>
+  </mat-list>
+</div>

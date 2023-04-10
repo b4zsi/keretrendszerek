@@ -29,12 +29,12 @@ import {AngularFireModule} from '@angular/fire/compat';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatCardModule} from '@angular/material/card';
 import { ShopAdminComponent } from './pages/shop-admin/shop-admin.component'
+import { ShopAdminModule } from './pages/shop-admin/shop-admin.module';
 
 @NgModule({
   declarations : [
     AppComponent,
-    MenuComponent,
-    ShopAdminComponent
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +42,7 @@ import { ShopAdminComponent } from './pages/shop-admin/shop-admin.component'
     LoginModule,
     ContactModule,
     ProfileModule,
+    ShopAdminModule,
     MainModule,
     RegisterModule,
     ShopModule,

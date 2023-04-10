@@ -19,21 +19,31 @@
       <div fxFlex fxLayout fxLayoutAlign="flex-start" fxHide.xs>
         <ul fxLayout fxLayoutGap="5px" class="navigation-items">
           <li>
-            <a routerLink="/main"
-              ><mat-icon class="home_icon">home</mat-icon></a
-            >
+            <a routerLink="/main">Főoldal</a>
           </li>
           <li *ngIf="!loggedInUser">
             <a routerLink="/login">Bejelentkezés</a>
           </li>
+          <li *ngIf="!loggedInUser">
+            <a routerLink="/register">Regisztráció</a>
+          </li>
+          <li *ngIf="!isAdmin && loggedInUser">
+            <a routerLink="/shop">Bolt</a>
+          </li>
+          <li *ngIf="!isAdmin && !loggedInUser">
+            <a routerLink="/contact">Kapcsolat</a>
+          </li>
+          <li *ngIf="loggedInUser">
+            <a routerLink="/profil">Profil</a>
+          </li>
+          <li *ngIf="isAdmin && loggedInUser">
+            <a routerLink="/shop-admin">Termékek szerkesztése</a>
+          </li>
+          <li *ngIf="loggedInUser && !isAdmin">
+            <a routerLink="/kosar">Kosár</a>
+          </li>
           <li *ngIf="loggedInUser">
             <a routerLink="/login" (click)="logout()">Kijelentkezés</a>
-          </li>
-          <li><a routerLink="/register">Regisztráció</a></li>
-          <li><a routerLink="/shop">Bolt</a></li>
-          <li><a routerLink="/contact">Kapcsolat</a></li>
-          <li *ngIf="loggedInUser">
-            <a routerLink="/profile">Profil</a>
           </li>
         </ul>
       </div>

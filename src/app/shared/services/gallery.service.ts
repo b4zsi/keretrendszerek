@@ -22,7 +22,6 @@ export class GalleryService {
     }
 
     loadImage(imageUrl: string) {
-      console.log(imageUrl)
       //return this.storage.storage.ref().child(imageUrl);
       // return this.http.get(environment.hostUrl + '/assets/' + imageUrl, {responseType: 'blob'});
       return this.storage.ref(imageUrl).getDownloadURL();

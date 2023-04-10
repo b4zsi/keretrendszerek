@@ -1,16 +1,56 @@
+@font-face { font-family: porsche; src: url('../../assets/911porschav3title.ttf'); }
 div {
     display: flex;
+    color: white;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    height: 100%;
     font-size: 30px;
     align-items: center;
+    height: 455px;
+    font-family: main; 
 }
 
 .main_component {
     height: 100vh;
 }
+.lower{
+    background-image: url('../../assets/main-back.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+}
+
+.logo{
+    font-family: porsche;
+    font-size: 100px;
+    margin-bottom: 15px;
+}
 .mat-sidenav-container{
     height:100px;
+}
+.logoBackground{
+    height: 300px;
+}
+
+.loginButton{
+    align-self: flex-start;
+    margin: 5px;
+    margin-left: 75px;
+    margin-right: 75px;
+    height: 100px;
+    width: 300px;
+    border-radius: 15px;
+    font-size: 26px;
+    font-family: main;
+    font-weight: bold;
+}
+.buttons{
+    display:inline-block;
+    height: fit-content;
+    width: fit-content;
+    text-align: center;
+    margin: auto;
+    height: 150px;
+    z-index: 999;
 }

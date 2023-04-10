@@ -1,13 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+@font-face { font-family: main; src: url('../src/app/assets/LeagueMono-Regular.ttf'); }
 html, body { 
-    height: 100%; }
+    height: 100%; 
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
     
 }
 
 .mat-toolbar{
-    background-color: rgba($color: #FEB249, $alpha: 0.9);
+    background-color: rgba($color: #5b7C99, $alpha: 0.9);
 }
 .ng-star-inserted{
     font-size: 50;

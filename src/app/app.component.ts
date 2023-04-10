@@ -15,6 +15,7 @@ export class AppComponent implements AfterViewInit{
   page = '';
   routes: Array<string> = [];
   loggedInUser? : firebase.default.User | null;
+  isAdmin: boolean = false;
 
   constructor(private router: Router, private authService : AuthService, private elementRef:ElementRef) {
   }
@@ -34,9 +35,13 @@ export class AppComponent implements AfterViewInit{
     this.authService.isUserLoggedIn().subscribe(user=>{
       this.loggedInUser = user;
       localStorage.setItem('user', JSON.stringify(this.loggedInUser));
+      if(this.loggedInUser?.email === 'hello@hello.com'){
+          this.isAdmin = true;
+      }
     }, error => {
       console.log(error);
       localStorage.setItem('user', JSON.stringify('null'));
+
     })
   }
   

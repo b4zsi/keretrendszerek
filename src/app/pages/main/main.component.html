@@ -1,3 +1,23 @@
-<div style="font-size: 50px">
-  Üdv az oldalon {{ user[0].name.firstname }} {{ user[0].name.lastname }}
+<div style="background-color: wheat" class="logoBackground">
+  <span class="logo">Porsche</span>
+  <br />
+  Magyarország legnépszerűbb autós webshopja.
+</div>
+<div class="lower">
+  <span class="buttons">
+    <button
+      mat-flat-button
+      class="loginButton"
+      (click)="navigateToSite('login')"
+    >
+      Bejelentkezés
+    </button>
+    <button
+      mat-flat-button
+      class="loginButton"
+      (click)="navigateToSite('register')"
+    >
+      Regisztráció
+    </button>
+  </span>
 </div>

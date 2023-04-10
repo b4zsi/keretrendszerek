@@ -1,5 +1,6 @@
 body{
-    background-color: #3c6542;
+    background-color: #5b7C99;
+    font-family: main;
 }
 a {
     text-decoration: none;
@@ -9,19 +10,14 @@ a {
 }
 
 a:hover, a:active {
-    color: rgba($color: #3c6542, $alpha: 1.0);
+    color: rgba($color: lightgray, $alpha: 1.0);
 }
 
 .navigation-items {
     list-style: none;
     padding-left: 0;
+    font-family: main;
 }
-
-mat-sidenav {
-    width: 250px;
-    color: darkolivegreen;
-}
-
 .ng-star-inserted{
     align-items: center;
 }
