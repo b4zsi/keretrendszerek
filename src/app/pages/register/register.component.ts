@@ -26,9 +26,9 @@ export class RegisterComponent implements OnInit{
   });
 
   constructor(
-    private location: Location, 
-    private router: Router, 
-    private AuthService : AuthService, 
+    private location: Location,
+    private router: Router,
+    private AuthService : AuthService,
     private UserService : UserService,
     private SnackBarService : SnackBarService
   ) { }
@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit{
     }else if(password !== rePassword){
       this.SnackBarService.openWithMessage("Nem egyező jelszavak!");
     }
-    
+
     if(email && password && password === rePassword) {
       this.AuthService.register(email, password).then(cred=>{
         const user : User = {
@@ -58,7 +58,8 @@ export class RegisterComponent implements OnInit{
           name: {
             firstname : this.signUpForm.get('name.firstname')?.value as string,
             lastname : this.signUpForm.get('name.lastname')?.value as string
-          }  
+          },
+          isAdmin:false
         }
         this.UserService.create(user).then(()=>{
           this.SnackBarService.openWithMessage("Sikeres regisztráció!")
@@ -66,11 +67,11 @@ export class RegisterComponent implements OnInit{
         }).catch(error=>{
             this.SnackBarService.openWithMessage("Váratlan hiba történt.")
         });
-       
+
       }).catch(error=>{console.log(error)})
     }
-      
-    
+
+
   }
 
   goBack() {

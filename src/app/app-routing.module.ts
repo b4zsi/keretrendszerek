@@ -24,8 +24,9 @@ const routes: Routes = [
   { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule) },
   { path: 'register', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule) },
   { path: 'profil', loadChildren: ()=>import('./pages/profile/profile.module').then(m=>m.ProfileModule)},
-  { path: 'shop-admin', loadChildren: ()=>import('./pages/shop-admin/shop-admin.module').then(m=>m.ShopAdminModule)}
-
+  { path: 'shop-admin', loadChildren: ()=>import('./pages/shop-admin/shop-admin.module').then(m=>m.ShopAdminModule)},
+  { path: 'cart', loadChildren: () => import('./shared/stepper/stepper.module').then(m => m.StepperModule)},
+  { path: 'comments', loadChildren: () => import('./pages/comments/comments.module').then(m => m.CommentsModule)}
 ]
 
 @NgModule({

@@ -27,6 +27,9 @@
           <li *ngIf="!loggedInUser">
             <a routerLink="/register">Regisztráció</a>
           </li>
+          <li *ngIf="loggedInUser">
+            <a routerLink="/cart">Kosár</a>
+          </li>
           <li *ngIf="!isAdmin && loggedInUser">
             <a routerLink="/shop">Bolt</a>
           </li>
@@ -39,11 +42,14 @@
           <li *ngIf="isAdmin && loggedInUser">
             <a routerLink="/shop-admin">Termékek szerkesztése</a>
           </li>
-          <li *ngIf="loggedInUser && !isAdmin">
-            <a routerLink="/kosar">Kosár</a>
+          <li *ngIf="loggedInUser">
+            <a routerLink="/rendelesek" >Rendeléseim</a>
           </li>
           <li *ngIf="loggedInUser">
-            <a routerLink="/login" (click)="logout()">Kijelentkezés</a>
+            <a routerLink="/comments" >Kommentek</a>
+          </li>
+          <li *ngIf="loggedInUser">
+            <a routerLink="/login" (click)="logout()">K</a>
           </li>
         </ul>
       </div>

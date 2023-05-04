@@ -1,0 +1,23 @@
+<mat-dialog-content>
+  <div>
+    <form [formGroup]="productForm">
+      <mat-form-field>
+        <mat-label for="nev">Termek neve: </mat-label>
+        <input matInput type="text" formControlName="nev" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label for="ar">Termék ára: </mat-label>
+        <input matInput type="text" formControlName="ar" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label for="ar">Kép: </mat-label>
+        <input matInput type="text" formControlName="ar" />
+      </mat-form-field>
+    </form>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button (click)="close()">Close</button>
+  <button mat-raised-button (click)="save()">Save</button>
+</mat-dialog-actions>

@@ -1,0 +1,23 @@
+body{
+  width: 60%;
+}
+app-product-dialog{
+  width: 60%;
+}
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+form div {
+  padding: 5px 5px 5px 5px;
+}
+
+form {
+  display: inline-grid;
+  width: 70%;
+  align-self: center;
+}

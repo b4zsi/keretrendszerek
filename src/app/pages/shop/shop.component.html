@@ -1,15 +1,29 @@
 <div>
   <mat-list style="line-height: 10px" *ngIf="this.isPageLoaded">
     <mat-card *ngFor="let imageObject of this.galleryObject">
-      {{ imageObject.leiras }}
-      {{ imageObject.ar }} Ft
+      <div class="text">
+        {{ imageObject.leiras }}
+      </div>
+      <br />
+
+      <div class="text">
+        {{ imageObject.ar }} Ft
+      </div>
       <img
         [src]="imageObject.download_url"
         alt="af"
-        height="150px"
-        width="200px"
-        style="align-self: flex-end; padding-top: 20px"
+        width="300px"
       />
+
+        <button mat-raised-button (click)="toCart(imageObject.ar, imageObject.leiras)">Kosárba</button>
+        <button mat-raised-button color="warn" *ngIf="isAdminUser"
+        (click)="deleteProduct(imageObject.download_url, imageObject.id)"
+        class="button-1">Törlés</button>
+      <button mat-raised-button *ngIf="isAdminUser" class="button-2"
+      (click)="openDialog(imageObject.leiras, imageObject.ar)">Szerkesztés</button>
     </mat-card>
   </mat-list>
+
 </div>
+  <button mat-raised-button *ngIf="isAdminUser" class="button-2" (click)="openDialog('',5000)">Hozzáadás</button>
+

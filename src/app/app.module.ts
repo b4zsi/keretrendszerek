@@ -11,6 +11,7 @@ import { MainModule } from './pages/main/main.module';
 import { RegisterModule } from './pages/register/register.module';
 import { ShopModule } from './pages/shop/shop.module';
 import { MenuModule } from './shared/menu/menu.module';
+import { CartModule } from './pages/cart/cart.module';
 import { FormsModule } from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,13 +29,19 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire/compat';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatCardModule} from '@angular/material/card';
-import { ShopAdminComponent } from './pages/shop-admin/shop-admin.component'
 import { ShopAdminModule } from './pages/shop-admin/shop-admin.module';
+import { ProductDialogModule } from './shared/dialog/product-dialog/product-dialog.module';
+import { StepperModule } from './shared/stepper/stepper.module';
+import { CommentsComponent } from './pages/comments/comments.component';
+import { CommentsModule } from './pages/comments/comments.module';
+import { RendelesekComponent } from './pages/rendelesek/rendelesek.component';
 
 @NgModule({
   declarations : [
     AppComponent,
-    MenuComponent
+    MenuComponent,
+    RendelesekComponent,
+    //ProductDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +53,10 @@ import { ShopAdminModule } from './pages/shop-admin/shop-admin.module';
     MainModule,
     RegisterModule,
     ShopModule,
+    ProductDialogModule,
     MenuModule,
+    StepperModule,
+    CommentsModule,
     BrowserAnimationsModule,
     MatIconModule,
     MatListModule,
@@ -55,6 +65,7 @@ import { ShopAdminModule } from './pages/shop-admin/shop-admin.module';
     MatSnackBarModule,
     MatCardModule,
     FlexLayoutModule,
+
     MatButtonModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),

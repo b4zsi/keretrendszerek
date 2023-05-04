@@ -7,22 +7,22 @@ import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@
 })
 export class MenuComponent  implements OnInit, AfterViewInit{
   @Input() currentPage: string = '';
-  @Input() loggedInUser?: firebase.default.User | null; 
+  @Input() loggedInUser?: firebase.default.User | null;
   @Output() selectedPage: EventEmitter<string> = new EventEmitter();
   @Output() onCloseSidenav: EventEmitter<boolean> = new EventEmitter();
   @Output() onLogout : EventEmitter<boolean> = new EventEmitter();
 
 
   constructor() {
-    
+
   }
 
   ngOnInit(): void {
-    
+
   }
 
   ngAfterViewInit(): void {
-   
+
   }
 
   menuSwitch() {

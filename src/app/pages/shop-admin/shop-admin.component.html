@@ -1,8 +1,8 @@
 <div>
-  <mat-list style="line-height: 10px" *ngIf="this.isPageLoaded">
+  <mat-list style="line-height: 10px">
     <mat-card *ngFor="let imageObject of this.galleryObject">
-      {{ imageObject.leiras }}
-      {{ imageObject.ar }} Ft
+      <span class="hello">{{ imageObject.leiras }}</span>
+      <span class="hello">{{ imageObject.ar }} Ft</span>
       <img
         [src]="imageObject.download_url"
         alt="af"
@@ -13,11 +13,15 @@
       <button mat-stroked-button class="gomb" (click)="this.updateProduct()">
         Szerkesztés
       </button>
-      <button mat-stroked-button class="gomb" (click)="this.deleteProduct()">
+      <button
+        mat-stroked-button
+        class="gomb"
+        (click)="this.deleteProduct(imageObject.download_url, imageObject.id)"
+      >
         Törlés
       </button>
     </mat-card>
-    <button mat-stroked-button class="gomb" (click)="this.addProduct()">
+    <button mat-raised-button class="addButton" (click)="this.addProduct()">
       Hozzáadás
     </button>
   </mat-list>

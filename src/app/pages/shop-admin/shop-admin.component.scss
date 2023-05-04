@@ -2,12 +2,13 @@ div{
     height: 100%;
     background-color: rgba($color: #8c92ac, $alpha: 0.8);
     background-position: 100%;
+    margin: auto;
 }
 
 mat-card{
     padding: 10px;
-    margin-left: 80px;
-    margin-right: 200px;
+    margin-left: 100px;
+    margin-right: 180px;
     margin-top: 10px;
     border-radius: 10px;
     height: 300px;
@@ -15,5 +16,16 @@ mat-card{
 }
 
 .gomb{
-margin: 5px;
+margin: auto;
+}
+
+.hello{
+    margin-bottom: 10px;
+}
+
+.addButton{
+    margin: auto;
+    text-align: center;
+    margin-left: 620px;
+    margin-top: 40px;
 }

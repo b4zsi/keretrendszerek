@@ -8,19 +8,17 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   providedIn: 'root'
 })
 export class ProductService {
+  private basePath = 'images'
 
   constructor(
     private storage:AngularFireStorage,
     private afs : AngularFirestore
   ) { }
 
-   // public file:Image ;
-    
-
   chooseFile(event:any){
   }
 
-  createProduct(){
+  uploadProduct(){
     //const storageRef = this.storage.ref(this.storage)
     console.log("creaate");
     //kep upload es a tobbi
@@ -28,7 +26,10 @@ export class ProductService {
 
   deleteProduct(download_url : string, id:string) {
     this.storage.storage.refFromURL(download_url).delete();
-    this.afs.collection("images").doc(id).delete();
+    this.afs.collection("images").doc(id).delete().catch((error)=>{
+      console.log(error);
+    });
+
     //first delete picture from storage than document
    //ide jo lenne egy snackbar
   }

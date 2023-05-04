@@ -1,0 +1,42 @@
+<div class="container">
+  <h2>Kosár</h2>
+  <table class="table">
+    <thead *ngIf="cart">
+      <tr>
+        <th>Név</th>
+        <th>Ár</th>
+        <th>Mennyiség</th>
+        <th>Összesen</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cart">
+        <td>{{ item.name }}</td>
+        <td>{{ item.price }} Ft</td>
+        <td>
+          <button mat-button class="btn btn-primary" (click)="decrement(item)">-</button>
+          <span class="mx-2">{{ item.quantity }}</span>
+          <button mat-button class="btn-primary" (click)="increment(item)">+</button>
+        </td>
+        <td>{{ item.price * item.quantity }} Ft</td>
+        <td>
+          <button mat-button class="btn btn-sm btn-danger" (click)="remove(item)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="cart.length === 0">
+        <td colspan="5" class="text-center">A kosarad jelenleg üres</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3"></td>
+        <td><strong>Összesen:</strong></td>
+        <td><strong>{{ getTotal() }}</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+
+</div>
+
