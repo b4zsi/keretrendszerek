@@ -26,7 +26,8 @@ const routes: Routes = [
   { path: 'profil', loadChildren: ()=>import('./pages/profile/profile.module').then(m=>m.ProfileModule)},
   { path: 'shop-admin', loadChildren: ()=>import('./pages/shop-admin/shop-admin.module').then(m=>m.ShopAdminModule)},
   { path: 'cart', loadChildren: () => import('./shared/stepper/stepper.module').then(m => m.StepperModule)},
-  { path: 'comments', loadChildren: () => import('./pages/comments/comments.module').then(m => m.CommentsModule)}
+  { path: 'comments', loadChildren: () => import('./pages/comments/comments.module').then(m => m.CommentsModule)},
+  { path: 'rendelesek', loadChildren: () => import('./pages/rendelesek/rendelesek.module').then(m => m.RendelesekModule)}
 ]
 
 @NgModule({

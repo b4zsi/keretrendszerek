@@ -23,7 +23,7 @@
       (click)="openDialog(imageObject.leiras, imageObject.ar)">Szerkesztés</button>
     </mat-card>
   </mat-list>
+  <button mat-raised-button *ngIf="isAdminUser" (click)="openDialog('',5000)">Hozzáadás</button>
 
 </div>
-  <button mat-raised-button *ngIf="isAdminUser" class="button-2" (click)="openDialog('',5000)">Hozzáadás</button>
 

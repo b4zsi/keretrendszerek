@@ -1,0 +1,25 @@
+.container {
+  margin-top: 2rem;
+}
+
+.mat-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mat-header-row {
+  background-color: #1976d2;
+  color: #fff;
+}
+
+.mat-row:hover {
+  background-color: #eee;
+}
+
+.mat-cell,
+.mat-header-cell {
+  padding: 8px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 400;
+}

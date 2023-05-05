@@ -1,5 +1,5 @@
 export interface Comment {
-    user_id:string,
+    title:string,
     comment:string,
     date:Date
 }

@@ -35,13 +35,12 @@ import { StepperModule } from './shared/stepper/stepper.module';
 import { CommentsComponent } from './pages/comments/comments.component';
 import { CommentsModule } from './pages/comments/comments.module';
 import { RendelesekComponent } from './pages/rendelesek/rendelesek.component';
+import { RendelesekModule } from './pages/rendelesek/rendelesek.module';
 
 @NgModule({
   declarations : [
     AppComponent,
     MenuComponent,
-    RendelesekComponent,
-    //ProductDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +53,7 @@ import { RendelesekComponent } from './pages/rendelesek/rendelesek.component';
     RegisterModule,
     ShopModule,
     ProductDialogModule,
+    RendelesekModule,
     MenuModule,
     StepperModule,
     CommentsModule,

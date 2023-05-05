@@ -1,1 +1,30 @@
-<p>comments works!</p>
+<html>
+  <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Cím</mat-label>
+      <input matInput formControlName="title">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Komment</mat-label>
+      <textarea matInput formControlName="comment"></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="commentForm.invalid">Submit</button>
+  </form>
+
+  <span class="kartyak">
+  <mat-card class="comment-card" *ngFor="let comment of comments | async">
+    <mat-card-header>
+      <div mat-card-avatar class="comment-avatar">
+        <mat-icon>account_circle</mat-icon>
+      </div>
+      <mat-card-title>{{ comment.title }}</mat-card-title>
+      <!-- <mat-card-subtitle>{{ comment.date | date: 'MMM d, y h:mm a' }}</mat-card-subtitle> -->
+    </mat-card-header>
+    <mat-card-content>
+      <p class="comment-text">{{ comment.comment }}</p>
+    </mat-card-content>
+    <hr style="width:50%"/>
+  </mat-card>
+  </span>
+</html>
+

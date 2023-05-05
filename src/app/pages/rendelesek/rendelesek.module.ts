@@ -2,13 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { RendelesekRoutingModule } from './rendelesek-routing.module';
+import { RendelesekComponent } from './rendelesek.component';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    RendelesekComponent
+  ],
   imports: [
     CommonModule,
-    RendelesekRoutingModule
+    RendelesekRoutingModule,
+    MatTableModule
   ]
 })
 export class RendelesekModule { }

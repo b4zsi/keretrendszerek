@@ -6,6 +6,7 @@ import { CartComponent } from './cart.component';
 import { StepperComponent } from 'src/app/shared/stepper/stepper.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     CommonModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule
   ],
   exports: [
     CartComponent

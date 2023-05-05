@@ -1,0 +1,23 @@
+body, html{
+  width: 100%;
+  margin: auto;
+  background-image: url('../../assets/main-back.jpeg');
+  background-size: cover;
+  opacity: 0.85;
+}
+
+form div {
+  padding: 5px 5px 5px 5px;
+}
+
+form {
+  display: inline-grid;
+  width: 30%;
+  align-self: center;
+  margin-left: 35%;
+  margin-top: 10%;
+}
+mat-card {
+  background-color: lightgrey;
+}
+

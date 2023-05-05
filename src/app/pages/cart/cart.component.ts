@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { CdkTableDataSourceInput } from '@angular/cdk/table';
+import { Component, Input } from '@angular/core';
 import { CartService } from 'src/app/shared/services/cart.service';
+import { Product } from 'src/app/shared/model/Product';
+import { Order } from 'src/app/shared/model/Order';
 
 
 @Component({
@@ -8,11 +11,17 @@ import { CartService } from 'src/app/shared/services/cart.service';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent {
-  cart: any[] = [];
 
   constructor(private cartService: CartService) {
     this.cart = cartService.getCart();
   }
+
+  cart: any[] = [];
+  dataSource: CdkTableDataSourceInput<any> = [];
+
+  @Input() cart1: Order[] = this.cartService.getCart();
+  displayedColumns: string[] = ['name', 'price', 'quantity', 'total', 'actions'];
+
 
   increment(item: any): void {
     item.quantity++;

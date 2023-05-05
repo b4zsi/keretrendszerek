@@ -1,6 +1,5 @@
 export interface Product {
-    id:string;
-    download_url:string;
-    leiras:string;
+    nev:string;
     ar:number;
+    quantity:string;
 }

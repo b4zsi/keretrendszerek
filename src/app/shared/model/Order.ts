@@ -1,11 +1,11 @@
 export interface Order {
-  user_id:string,
-  shippingAddress: {
+  email:string,
+  nev:string
+  Cim: {
     utca: string;
     varos: string;
     megye: string;
     irszam: string;
-    orszag: string;
   };
   Termekek: {
     termek_nev: string;

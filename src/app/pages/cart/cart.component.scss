@@ -1,5 +1,14 @@
-body{height: 100%;background-color: aquamarine;}
+html {
+  height: 100%;
 
+}
+mat-stepper {
+  background-image: url('../../assets/main-back.jpeg');
+  background-repeat: no-repeat;
+}
+::ng-deep.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+ background-image: url('../../assets/main-back.jpeg') !important
+}
 table {
   border-collapse: collapse;
   width: 100%;
@@ -25,5 +34,9 @@ tfoot td {
 
 .total {
   font-size: 24px;
+}
+
+.plus{
+  width: 150px;
 }
 
