@@ -1,20 +1,36 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
+import { SnackBarService } from './snack-bar.service';
+import { Comment } from '../model/Comment';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentService {
 
-  constructor() { }
+  private commentsCollection: AngularFirestoreCollection<Comment>;
+  comments: Observable<Comment[]>;
 
-  getAll() {
-
+  constructor(private firestore: AngularFirestore, private snackbarService:SnackBarService, private userService :UserService) {
+    this.commentsCollection = firestore.collection<Comment>('comments', ref => ref.orderBy('date', 'desc'));
+    this.comments = this.commentsCollection.valueChanges();
   }
 
-  addComment() {
+  getAll() :Observable<Comment[]>{
+      return this.comments;
+  }
+
+  addComment(comment: Comment) {
+    this.firestore.collection('comments').add(comment).then(() => {
+      this.snackbarService.openWithMessage("Komment sikeresen hozzáadva.");
+    }).catch((error) => {
+      this.snackbarService.openWithMessage("Valami hiba történt.")
+    });
 
   }
-  deleteComment() {
-
+  deleteComment(docId:any) {
+      this.firestore.collection('comment').doc(docId).delete()
   }
 }

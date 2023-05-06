@@ -22,6 +22,7 @@
     </mat-card-header>
     <mat-card-content>
       <p class="comment-text">{{ comment.comment }}</p>
+      <button mat-stroked-button color="warn" (click)="deleteComment(comment)" *ngIf="isAdmin()">törlés</button>
     </mat-card-content>
     <hr style="width:50%"/>
   </mat-card>

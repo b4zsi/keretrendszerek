@@ -65,7 +65,6 @@ import { RendelesekModule } from './pages/rendelesek/rendelesek.module';
     MatSnackBarModule,
     MatCardModule,
     FlexLayoutModule,
-
     MatButtonModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),

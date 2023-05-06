@@ -21,8 +21,8 @@ const routes: Routes = [
     redirectTo: '/main',
     pathMatch: 'full'
   },
-  { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule) },
-  { path: 'register', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule) },
+  { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)},
+  { path: 'register', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule) ,canActivate: [!AuthGuard]},
   { path: 'profil', loadChildren: ()=>import('./pages/profile/profile.module').then(m=>m.ProfileModule)},
   { path: 'shop-admin', loadChildren: ()=>import('./pages/shop-admin/shop-admin.module').then(m=>m.ShopAdminModule)},
   { path: 'cart', loadChildren: () => import('./shared/stepper/stepper.module').then(m => m.StepperModule)},

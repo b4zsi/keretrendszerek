@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./stepper.component.scss']
 })
 export class StepperComponent {
+   email :string = "";
 
   shippingForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -29,9 +30,11 @@ export class StepperComponent {
     private orderService:OrdersService,
     private router:Router
     ) {
+      this.email = this.userService.loggedUser?.email as string;
   }
 
   submitShippingInfo() {
+    console.log(this.userService.user);
     let nev = this.shippingForm.get('name')?.value;
     let cart = this.cartService.getCart();
     let itemek = []
@@ -41,7 +44,7 @@ export class StepperComponent {
     }
 
     const order : Order = {
-      email: this.userService.loggedUser!.email as string,
+      email: this.email,
       nev:nev as string,
       Cim:{
         utca: this.shippingForm.get('address')?.value as string,
