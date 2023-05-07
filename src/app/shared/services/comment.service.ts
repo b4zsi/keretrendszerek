@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
+import { Observable, concatWith, take } from 'rxjs';
 import { SnackBarService } from './snack-bar.service';
 import { Comment } from '../model/Comment';
 import { UserService } from './user.service';
@@ -18,19 +18,26 @@ export class CommentService {
     this.comments = this.commentsCollection.valueChanges();
   }
 
-  getAll() :Observable<Comment[]>{
-      return this.comments;
+   getAll():Comment[]{
+      let kommentek: Comment[] = [];
+      this.comments.pipe(take(1)).subscribe((comment)=>{
+        for(let fos of comment){
+          kommentek.push(fos)
+        }
+      });
+      return kommentek;
   }
 
-  addComment(comment: Comment) {
-    this.firestore.collection('comments').add(comment).then(() => {
+  addComment(comment: Comment, id:string) {
+    this.firestore.collection('comments').doc(id).set(comment).then(() => {
       this.snackbarService.openWithMessage("Komment sikeresen hozzáadva.");
     }).catch((error) => {
       this.snackbarService.openWithMessage("Valami hiba történt.")
     });
 
   }
-  deleteComment(docId:any) {
-      this.firestore.collection('comment').doc(docId).delete()
+  deleteComment(id:string) {
+    this.firestore.collection('comments').doc(id).delete();
+
   }
 }

@@ -41,10 +41,11 @@ export class ShopComponent implements OnInit{
       this.galleryService.loadImageMeta('__credits.json').pipe(take(1)).subscribe((data: Array<Image>) => {
         this.galleryObject = data;
         for(let i = 0;i < this.galleryObject!.length;++i){
-
-          this.galleryService.loadImage(this.galleryObject!.at(i)!.image_url).pipe(take(1)).subscribe(data => {
-            this.galleryObject![i].download_url = data
-          });
+          if(this.galleryObject!.at(i)!.image_url) {
+            this.galleryService.loadImage(this.galleryObject!.at(i)!.image_url).pipe(take(1)).subscribe(data => {
+              this.galleryObject![i].download_url = data
+            });
+          }
         }
         this.userService.getByEmail(this.loggedUser!.email!).pipe(take(1)).subscribe(data=>{
           data[0].isAdmin ? this.isAdminUser = true : this.isAdminUser = false
@@ -72,7 +73,9 @@ export class ShopComponent implements OnInit{
   });
 
   dialogRef.afterClosed().subscribe(result => {
-    console.log(`Dialog result: ${result}`);
+    if(result) {
+      console.log(result);
+    }
   });
  }
 }

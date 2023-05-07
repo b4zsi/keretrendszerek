@@ -1,5 +1,4 @@
 export interface Order {
-  email:string,
   nev:string
   Cim: {
     utca: string;
@@ -12,6 +11,6 @@ export interface Order {
     mennyiseg: number;
     ar: number;
   }[];
-  rendelesDatuma: Date;
+  rendelesDatuma: number;
   osszesen: number;
 }

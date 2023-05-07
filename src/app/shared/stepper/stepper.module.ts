@@ -7,7 +7,7 @@ import { StepperComponent } from './stepper.component';
 import { CartComponent } from 'src/app/pages/cart/cart.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 
@@ -20,12 +20,12 @@ import { MatInputModule } from '@angular/material/input';
     CommonModule,
     StepperRoutingModule,
     CartModule,
-    //shipping
     MatStepperModule,
     MatFormFieldModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatInputModule,
+    FormsModule
 
   ],
   exports : [StepperComponent]

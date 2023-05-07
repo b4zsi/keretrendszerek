@@ -12,7 +12,7 @@ import { SnackBarService } from 'src/app/shared/services/snack-bar.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  
+
   email = new FormControl('', [Validators.email, Validators.required])
   password = new FormControl('', [Validators.minLength(8), Validators.required]);
 
@@ -21,8 +21,8 @@ export class LoginComponent {
 
   loading: boolean = false;
 
-  constructor(private router: Router, 
-    private loadingService: FakeLoadingService, 
+  constructor(private router: Router,
+    private loadingService: FakeLoadingService,
     private authService : AuthService,
     private snackBarService : SnackBarService) { }
 
@@ -39,7 +39,7 @@ export class LoginComponent {
     if(!this.email || !this.password){
       this.snackBarService.openWithMessage("Hiányzó adatok!");
     }
-    if(this.email.valid && this.password.valid 
+    if(this.email.valid && this.password.valid
       && this.password.value && this.email.value) {
       this.authService.login(this.email.value, this.password.value).then((cred)=>{
           this.snackBarService.openWithMessage("Sikeres bejelentkezés!");
@@ -53,11 +53,14 @@ export class LoginComponent {
     }
     try {
       if(this.email.value && this.password.value){
-        const _ = await this.loadingService.loadingWithPromise(this.email.value, this.password.value)
-        this.router.navigateByUrl('/main');
+        const _ = await this.loadingService.loadingWithPromise(this.email.value, this.password.value).then(()=>{
+          this.router.navigateByUrl('/main');
+        }).catch(error=>{
+          console.log("sikeres bejentkezés")
+        })
       }
     } catch (error) {
-      console.error(error, 'Incorrect email or password!');
+      console.error(error);
     }
 
 

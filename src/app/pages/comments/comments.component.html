@@ -12,18 +12,20 @@
   </form>
 
   <span class="kartyak">
-  <mat-card class="comment-card" *ngFor="let comment of comments | async">
+  <mat-card class="comment-card" *ngFor="let comment of this.comments">
     <mat-card-header>
       <div mat-card-avatar class="comment-avatar">
         <mat-icon>account_circle</mat-icon>
       </div>
       <mat-card-title>{{ comment.title }}</mat-card-title>
-      <!-- <mat-card-subtitle>{{ comment.date | date: 'MMM d, y h:mm a' }}</mat-card-subtitle> -->
+       <!-- <mat-card-subtitle>{{ comment.date | date: 'MMM d, y h:mm a' }}</mat-card-subtitle> -->
     </mat-card-header>
     <mat-card-content>
       <p class="comment-text">{{ comment.comment }}</p>
-      <button mat-stroked-button color="warn" (click)="deleteComment(comment)" *ngIf="isAdmin()">törlés</button>
     </mat-card-content>
+    <mat-card-actions>
+      <button mat-stroked-button (click)="deleteComment(comment)" *ngIf="isAdmin">törlés</button>
+      </mat-card-actions>
     <hr style="width:50%"/>
   </mat-card>
   </span>

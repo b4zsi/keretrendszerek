@@ -17,14 +17,18 @@ export class GalleryService {
 
 
     loadImageMeta(metaUrl: string): Observable<Array<Image>> {
-      // return this.http.get(environment.hostUrl + '/assets/' + metaUrl) as Observable<Array<Image>>;
       return this.afs.collection<Image>(this.collectionName).valueChanges();
 
     }
 
     loadImage(imageUrl: string) :Observable<string>{
-      //return this.storage.storage.ref().child(imageUrl);
-      // return this.http.get(environment.hostUrl + '/assets/' + imageUrl, {responseType: 'blob'});
-      return this.storage.ref(imageUrl).getDownloadURL();
+      return this.storage.refFromURL("gs://keretrendszerek.appspot.com/images/"+imageUrl).getDownloadURL();
+    }
+
+    uploadImage(image: File, filename: string){
+      let metadata = { contentType: 'image/jpeg', }
+      const filePath = `images/${filename}`;
+      const fileRef = this.storage.ref(filePath);
+      return this.storage.upload(filePath, image, metadata);
     }
 }

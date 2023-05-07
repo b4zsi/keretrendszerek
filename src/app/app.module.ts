@@ -36,6 +36,7 @@ import { CommentsComponent } from './pages/comments/comments.component';
 import { CommentsModule } from './pages/comments/comments.module';
 import { RendelesekComponent } from './pages/rendelesek/rendelesek.component';
 import { RendelesekModule } from './pages/rendelesek/rendelesek.module';
+import { DatePipe } from './shared/pipes/date-pipe.pipe';
 
 @NgModule({
   declarations : [

@@ -23,10 +23,17 @@ export class ProductService {
   }
 
   deleteProduct(download_url : string, id:string) {
-    this.storage.storage.refFromURL(download_url).delete();
+    if(!download_url) {
+      console.log("hello")
+      this.afs.collection("images").doc(id).delete().catch((error)=>{
+        console.log(error);
+      });
+    }else {
+      this.storage.storage.refFromURL(download_url).delete();
     this.afs.collection("images").doc(id).delete().catch((error)=>{
       console.log(error);
     });
+    }
   }
 
   modifyProduct(){

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/compat/auth';
+import { take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,12 @@ export class AuthService {
 
   logout() {
     return this.auth.signOut();
+  }
+  getEmailAddress() :string{
+    let currentUserEmail:string = '';
+    this.auth.user.pipe(take(1)).subscribe(user=>{
+      currentUserEmail = user?.email as string;
+    })
+    return currentUserEmail;
   }
 }

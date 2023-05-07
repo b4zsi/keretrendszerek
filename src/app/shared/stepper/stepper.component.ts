@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { CartComponent } from 'src/app/pages/cart/cart.component';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Order } from '../model/Order';
-import { UserService } from '../services/user.service';
 import { CartService } from '../services/cart.service';
 import { OrdersService } from '../services/orders.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-stepper',
@@ -14,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class StepperComponent {
    email :string = "";
+
 
   shippingForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -24,17 +24,16 @@ export class StepperComponent {
   });
 
   constructor(
-    private fb: FormBuilder,
-    private userService:UserService,
+    private authService:AuthService,
     private cartService:CartService,
     private orderService:OrdersService,
-    private router:Router
+    private router:Router,
     ) {
-      this.email = this.userService.loggedUser?.email as string;
-  }
+    }
+    haselement = this.cartService.hasElement()
 
   submitShippingInfo() {
-    console.log(this.userService.user);
+    let total = this.cartService.getTotal();
     let nev = this.shippingForm.get('name')?.value;
     let cart = this.cartService.getCart();
     let itemek = []
@@ -44,7 +43,6 @@ export class StepperComponent {
     }
 
     const order : Order = {
-      email: this.email,
       nev:nev as string,
       Cim:{
         utca: this.shippingForm.get('address')?.value as string,
@@ -53,8 +51,8 @@ export class StepperComponent {
         irszam: this.shippingForm.get('zip')?.value as string,
       },
         Termekek : itemek,
-      rendelesDatuma:new Date,
-      osszesen:4000
+      rendelesDatuma:new Date().getTime(),
+      osszesen:total
     }
       this.orderService.saveOrder(order);
       this.cartService.clearCart();

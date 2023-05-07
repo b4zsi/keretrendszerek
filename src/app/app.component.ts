@@ -3,6 +3,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { AuthService } from './shared/services/auth.service';
+import { SnackBarService } from './shared/services/snack-bar.service';
 
 @Component({
   selector: 'app-root',
@@ -15,9 +16,10 @@ export class AppComponent implements AfterViewInit{
   page = '';
   routes: Array<string> = [];
   loggedInUser? : firebase.default.User | null;
-  isAdmin: boolean = false;
 
-  constructor(private router: Router, private authService : AuthService, private elementRef:ElementRef) {
+  constructor(private router: Router, private authService : AuthService, private elementRef:ElementRef,
+      private snackbarService:SnackBarService
+    ) {
   }
   ngAfterViewInit(): void {
     this.elementRef.nativeElement.ownerDocument.body.style
@@ -35,16 +37,13 @@ export class AppComponent implements AfterViewInit{
     this.authService.isUserLoggedIn().subscribe(user=>{
       this.loggedInUser = user;
       localStorage.setItem('user', JSON.stringify(this.loggedInUser));
-      if(this.loggedInUser?.email === 'hello@hello.com'){
-          this.isAdmin = true;
-      }
     }, error => {
       console.log(error);
       localStorage.setItem('user', JSON.stringify('null'));
 
     })
   }
-  
+
   changePage(selectedPage: string) {
     this.router.navigateByUrl(selectedPage);
   }
@@ -60,7 +59,7 @@ export class AppComponent implements AfterViewInit{
   }
   logout(_? : boolean) {
     this.authService.logout().then(()=>{
-      console.log("U have been logged out.");
+      this.snackbarService.openWithMessage("Sikeres kijelentkezés!")
     }).catch(error=>{console.log(error)});
   }
 }

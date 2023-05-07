@@ -5,7 +5,6 @@
         {{ imageObject.leiras }}
       </div>
       <br />
-
       <div class="text">
         {{ imageObject.ar }} Ft
       </div>
@@ -13,6 +12,7 @@
         [src]="imageObject.download_url"
         alt="af"
         width="300px"
+        height="200px"
       />
 
         <button mat-raised-button (click)="toCart(imageObject.ar, imageObject.leiras)">Kosárba</button>

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './shared/services/auth.guard';
+import { GuestGuard } from './shared/services/guest.guard';
 
 const routes: Routes = [
   {
@@ -10,7 +11,7 @@ const routes: Routes = [
   {
     path: 'shop',
     loadChildren: () => import('./pages/shop/shop.module').then(m => m.ShopModule),
-    canActivate: [AuthGuard]
+    canActivate:[AuthGuard]
   },
   {
     path: 'contact',
@@ -21,13 +22,19 @@ const routes: Routes = [
     redirectTo: '/main',
     pathMatch: 'full'
   },
-  { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)},
-  { path: 'register', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule) ,canActivate: [!AuthGuard]},
-  { path: 'profil', loadChildren: ()=>import('./pages/profile/profile.module').then(m=>m.ProfileModule)},
-  { path: 'shop-admin', loadChildren: ()=>import('./pages/shop-admin/shop-admin.module').then(m=>m.ShopAdminModule)},
-  { path: 'cart', loadChildren: () => import('./shared/stepper/stepper.module').then(m => m.StepperModule)},
-  { path: 'comments', loadChildren: () => import('./pages/comments/comments.module').then(m => m.CommentsModule)},
-  { path: 'rendelesek', loadChildren: () => import('./pages/rendelesek/rendelesek.module').then(m => m.RendelesekModule)}
+  { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule),
+    canActivate:[GuestGuard]
+  },
+  { path: 'register', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule)
+   ,canActivate: [GuestGuard]},
+  { path: 'profil', loadChildren: ()=>import('./pages/profile/profile.module').then(m=>m.ProfileModule),
+  canActivate:[AuthGuard]
+  },
+  { path: 'shop-admin', loadChildren: ()=>import('./pages/shop-admin/shop-admin.module').then(m=>m.ShopAdminModule),canActivate:[AuthGuard]},
+  { path: 'cart', loadChildren: () => import('./shared/stepper/stepper.module').then(m => m.StepperModule),canActivate:[AuthGuard]},
+  { path: 'comments', loadChildren: () => import('./pages/comments/comments.module').then(m => m.CommentsModule),canActivate:[AuthGuard]},
+  { path: 'rendelesek', loadChildren: () => import('./pages/rendelesek/rendelesek.module').then(m => m.RendelesekModule),canActivate:[AuthGuard]},
+  {path:'**', redirectTo:'/main'}
 ]
 
 @NgModule({

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, AsyncValidator } from '@angular/for
 import { Observable } from 'rxjs';
 import { Comment } from 'src/app/shared/model/Comment';
 import { CommentService } from 'src/app/shared/services/comment.service';
+import { SnackBarService } from 'src/app/shared/services/snack-bar.service';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -14,32 +15,39 @@ import { UserService } from 'src/app/shared/services/user.service';
 export class CommentsComponent {
 
   commentForm!: FormGroup;
-  comments!: Observable<Comment[]>;
-  constructor(private fb: FormBuilder, private CommentService :CommentService, private userService :UserService) {}
+  comments: Comment[] = [];
+  elso?:Comment;
+  constructor(private fb: FormBuilder,
+    private CommentService :CommentService,
+    private userService :UserService,
+    private firestore:AngularFirestore) {}
 
-  ngOnInit(): void {
+   ngOnInit(): void {
     this.commentForm = this.fb.group({
-      title: ['', [Validators.required, Validators.minLength(3)],],
-      comment: ['', [Validators.required, Validators.minLength(10)]],
+      title: ['', [Validators.required, Validators.minLength(5)],],
+      comment: ['', [Validators.required, Validators.minLength(20)]],
     });
-    //this.comments = this.CommentService.getAll();
+      this.comments = this.CommentService.getAll();
+     console.log(this.comments)
   }
 
   onSubmit() {
+    const autoId = this.firestore.collection('images').doc().ref.id;
     const comment: Comment = {
+      id:autoId,
       title: this.commentForm.get('title')!.value ,
       comment: this.commentForm.get('comment')!.value,
-      date: new Date(),
+      date: new Date().getTime(),
     };
-    this.CommentService.addComment(comment);
+    this.CommentService.addComment(comment, autoId);
     this.commentForm.reset();
   }
 
   deleteComment(comment:Comment) {
-    this.CommentService.deleteComment(comment);
+    this.CommentService.deleteComment(comment.id);
   }
 
-  async isAdmin() :Promise<boolean> {
+  isAdmin():boolean {
     return this.userService.isAdminUser(this.userService.loggedUser?.email as string);
   }
 

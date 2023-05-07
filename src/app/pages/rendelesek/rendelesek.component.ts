@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { Order } from 'src/app/shared/model/Order';
+import { DatePipe } from 'src/app/shared/pipes/date-pipe.pipe';
 
 @Component({
   selector: 'app-rendelesek',

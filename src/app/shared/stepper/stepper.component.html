@@ -1,5 +1,5 @@
 <mat-horizontal-stepper #stepper>
-  <mat-step label="Kosár">
+  <mat-step label="Kosár" [completed]="!haselement">
       <app-cart></app-cart>
   </mat-step>
   <mat-step label="Szállítás és Rendelés">
@@ -25,10 +25,10 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Zip</mat-label>
-        <input matInput formControlName="zip">
+        <input matInput formControlName="zip" type="number">
       </mat-form-field>
 
-      <button mat-button color="primary" (click)="submitShippingInfo()">Megrendel</button>
+      <button mat-button color="primary" (click)="submitShippingInfo()" [disabled]="!haselement && this.shippingForm.invalid">Megrendel</button>
     </form>
 
   </mat-step>
