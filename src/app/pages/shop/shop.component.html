@@ -1,6 +1,7 @@
 <div>
   <mat-list style="line-height: 10px" *ngIf="this.isPageLoaded">
-    <mat-card *ngFor="let imageObject of this.galleryObject">
+    <mat-card *ngFor="let imageObject of this.galleryObject"
+    [ngClass]="{'cheaper-product': cteIDs.includes(imageObject.id)}">
       <div class="text">
         {{ imageObject.leiras }}
       </div>

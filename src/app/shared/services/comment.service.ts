@@ -14,7 +14,7 @@ export class CommentService {
   comments: Observable<Comment[]>;
 
   constructor(private firestore: AngularFirestore, private snackbarService:SnackBarService, private userService :UserService) {
-    this.commentsCollection = firestore.collection<Comment>('comments', ref => ref.orderBy('date', 'desc'));
+    this.commentsCollection = firestore.collection<Comment>('comments', ref => ref.orderBy('date', 'desc').limit(5));
     this.comments = this.commentsCollection.valueChanges();
   }
 

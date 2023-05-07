@@ -4,11 +4,12 @@ import { Image } from '../../shared/model/Image';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { User } from '../../shared/model/User';
-import { take } from 'rxjs';
+import { Observable, switchMap, take } from 'rxjs';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductDialogComponent } from 'src/app/shared/dialog/product-dialog/product-dialog.component';
 import { SnackBarService } from 'src/app/shared/services/snack-bar.service';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 
 
@@ -32,8 +33,11 @@ export class ShopComponent implements OnInit{
     private userService: UserService,
     private productService:ProductService,
     private dialog:MatDialog,
-    private snackbarService:SnackBarService
+    private snackbarService:SnackBarService,
+    private firestore:AngularFirestore
     ){}
+
+    cteIDs:string[]=[];
 
    ngOnInit(): void{
     this.loggedUser = JSON.parse(localStorage.getItem('user') as string) as firebase.default.User
@@ -52,6 +56,12 @@ export class ShopComponent implements OnInit{
           this.isPageLoaded = true;
         });
       })
+
+      this.cheaperThanAverage().pipe(take(1)).subscribe((images:any)=>{
+        for(let image of images){
+          this.cteIDs.push(image.id)
+        }
+      });
   }
 
  toCart(ar : number, nev:string): void {
@@ -78,4 +88,17 @@ export class ShopComponent implements OnInit{
     }
   });
  }
+ //osszetett lekerdezes 1
+  cheaperThanAverage() :Observable<Image[]>{
+    return this.firestore.collection<Image>('images').valueChanges().pipe(
+      switchMap((products) => {
+        if (!products || products.length === 0) {
+          return [];
+        }
+        const averagePrice = products.reduce((total:number, p:any) => total + p.ar, 0) / products.length;
+        return this.firestore.collection<Image>('images', ref => ref.where('ar', '<', averagePrice).orderBy('ar').limit(3)).valueChanges();
+      })
+    );
+  }
+
 }
