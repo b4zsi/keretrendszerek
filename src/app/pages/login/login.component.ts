@@ -30,26 +30,32 @@ export class LoginComponent {
   }
   async login() {
 
-    if(!this.email.valid) {
+    if(this.email.invalid) {
       this.snackBarService.openWithMessage("Helytelen email cím!");
+      return
     }
-    if(!this.password.valid) {
+    if(this.password.invalid) {
       this.snackBarService.openWithMessage("Hibás jelszó!");
+      return
     }
     if(!this.email || !this.password){
       this.snackBarService.openWithMessage("Hiányzó adatok!");
+      return
     }
     if(this.email.valid && this.password.valid
       && this.password.value && this.email.value) {
       this.authService.login(this.email.value, this.password.value).then((cred)=>{
           this.snackBarService.openWithMessage("Sikeres bejelentkezés!");
           this.router.navigateByUrl("/main");
+          return
       }).catch(error=>{
         this.snackBarService.openWithMessage("Hibás email cím vagy jelszó!");
+        return
       });
     }
     else{
       this.snackBarService.openWithMessage("Hiányzó adatok!");
+      return
     }
     try {
       if(this.email.value && this.password.value){

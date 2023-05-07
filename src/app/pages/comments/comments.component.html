@@ -24,7 +24,7 @@
       <p class="comment-text">{{ comment.comment }}</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-stroked-button (click)="deleteComment(comment)" *ngIf="isAdmin">törlés</button>
+      <button mat-stroked-button (click)="deleteComment(comment)" *ngIf="isAdmin()">törlés</button>
       </mat-card-actions>
     <hr style="width:50%"/>
   </mat-card>

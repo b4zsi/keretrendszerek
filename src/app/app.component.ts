@@ -60,6 +60,7 @@ export class AppComponent implements AfterViewInit{
   logout(_? : boolean) {
     this.authService.logout().then(()=>{
       this.snackbarService.openWithMessage("Sikeres kijelentkezés!")
+      this.router.navigateByUrl('/main')
     }).catch(error=>{console.log(error)});
   }
 }
