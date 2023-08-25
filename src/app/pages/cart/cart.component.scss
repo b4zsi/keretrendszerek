@@ -3,11 +3,8 @@ html {
 
 }
 mat-stepper {
-  background-image: url('../../assets/main-back.jpeg');
+  //background-image: url('../../assets/main-back.jpeg');
   background-repeat: no-repeat;
-}
-::ng-deep.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
- background-image: url('../../assets/main-back.jpeg') !important
 }
 table {
   border-collapse: collapse;

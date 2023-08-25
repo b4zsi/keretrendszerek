@@ -7,14 +7,17 @@ html, body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: white;
 
 }
 
 .mat-toolbar{
-    background-color: rgba($color: #5b7C99, $alpha: 0.9);
+    background-color: rgba($color: #525e69, $alpha: 0.6);
+    background-position: 20%;
+    background-size: auto;
 }
 .ng-star-inserted{
-    font-size: 50;
+    font-size: 30;
 }
 mat-sidenav-container{
     height: 100%;

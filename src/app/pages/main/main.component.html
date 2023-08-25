@@ -1,4 +1,4 @@
-<div style="background-color: wheat" class="logoBackground">
+<div style="background-color: #8f00ff" class="logoBackground">
   <span class="logo">Porsche</span>
   <br />
   Magyarország legnépszerűbb autós webshopja.
@@ -6,6 +6,7 @@
 <div class="lower">
   <span class="buttons">
     <button
+      *ngIf="!loggedUser"
       mat-flat-button
       class="loginButton"
       (click)="navigateToSite('login')"
@@ -13,11 +14,28 @@
       Bejelentkezés
     </button>
     <button
+      *ngIf="!loggedUser"
       mat-flat-button
       class="loginButton"
       (click)="navigateToSite('register')"
     >
       Regisztráció
+    </button>
+    <button
+      *ngIf="loggedUser"
+      class="loginButton"
+      mat-flat-button
+      (click)="navigateToSite('shop')"
+    >
+      Áruház
+    </button>
+    <button
+      *ngIf="loggedUser"
+      class="loginButton"
+      mat-flat-button
+      (click)="navigateToSite('cart')"
+    >
+      Kosár
     </button>
   </span>
 </div>

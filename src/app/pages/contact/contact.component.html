@@ -1,29 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<body>
-  <mat-card style="width:40%; margin: auto; border-radius: 20px;">
-    <mat-card-header style="margin-left: 25%;">
-      <mat-card-title >Lépj velünk kapcsolatba</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form>
-        <mat-form-field appearance="fill">
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Your name">
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Email</mat-label>
-          <input matInput placeholder="Your email">
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Message</mat-label>
-          <textarea matInput placeholder="Your message"></textarea>
-        </mat-form-field>
-        <button mat-raised-button color="primary">Send</button>
-      </form>
-    </mat-card-content>
-  </mat-card>
-</body>
+  <body>
+    <div>
+      <mat-card>
+        <mat-card-content>
+          <form [formGroup]="FormData" (ngSubmit)="onSubmit(FormData.value)">
+            <mat-form-field appearance="fill">
+              <mat-label>Név</mat-label>
+              <input
+                matInput
+                placeholder="Név"
+                name="nev"
+                formControlName="nev"
+              />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Email cím</mat-label>
+              <input
+                matInput
+                placeholder="Email cím"
+                name="email"
+                formControlName="email"
+              />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Üzenet</mat-label>
+              <textarea
+                matInput
+                placeholder="üzenet"
+                rows="19"
+                name="uzenet"
+                formControlName="uzenet"
+              ></textarea>
+            </mat-form-field>
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              [disabled]="!FormData.valid"
+            >
+              Küldés
+            </button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </body>
 </html>
-

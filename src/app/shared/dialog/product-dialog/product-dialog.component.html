@@ -1,23 +1,30 @@
-
 <mat-dialog-content>
   <div>
     <form [formGroup]="productForm" action="post">
       <mat-form-field>
-        <mat-label for="nev">Termek neve: </mat-label>
+        <mat-label for="nev">Autó teljes neve: </mat-label>
         <input matInput type="text" formControlName="nev" />
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label for="ar">Termék ára: </mat-label>
+        <mat-label for="ar">Autó ára: </mat-label>
         <input matInput type="number" formControlName="ar" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label for="ar">Autó évjárata: </mat-label>
+        <input matInput type="number" formControlName="evjarat" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label for="ar">Autó kilóméter óra állása: </mat-label>
+        <input matInput type="number" formControlName="kilometeroraAllas" />
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Kép felöltés</mat-label>
-              <button mat-icon-button matPrefix (click)="f_input.click()">
+        <button mat-icon-button matPrefix (click)="f_input.click()">
           <mat-icon>attach_file</mat-icon>
         </button>
-              <input type="text" readonly matInput [formControl]="display"/>
-              <input
+        <input type="text" readonly matInput [formControl]="display" />
+        <input
           type="file"
           hidden
           #f_input
@@ -31,4 +38,3 @@
   <button mat-raised-button (click)="save()">Mentés</button>
   <button mat-raised-button (click)="close()">Bezárás</button>
 </mat-dialog-actions>
-

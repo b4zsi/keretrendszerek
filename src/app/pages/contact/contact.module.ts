@@ -19,7 +19,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatCardModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+
   ]
 })
 export class ContactModule { }

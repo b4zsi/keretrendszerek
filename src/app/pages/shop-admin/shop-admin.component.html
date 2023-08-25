@@ -1,8 +1,10 @@
 <div>
   <mat-list style="line-height: 10px">
     <mat-card *ngFor="let imageObject of this.galleryObject">
-      <span class="hello">{{ imageObject.leiras }}</span>
-      <span class="hello">{{ imageObject.ar }} Ft</span>
+      <span class="hello">{{ imageObject.nev }}</span>
+      <span class="hello">{{ imageObject.evjarat }}</span>
+      <span class="hello">{{ imageObject.kilometeroraAllas }} KM</span>
+      <span class="hello">{{ imageObject.ar }} Millió Ft</span>
       <img
         [src]="imageObject.download_url"
         alt="af"

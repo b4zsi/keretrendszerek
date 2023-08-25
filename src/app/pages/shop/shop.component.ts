@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewEncapsulation } from '@angular/core';
 import { GalleryService } from 'src/app/shared/services/gallery.service';
 import { Image } from '../../shared/model/Image';
 import { CartService } from 'src/app/shared/services/cart.service';
@@ -10,13 +10,39 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProductDialogComponent } from 'src/app/shared/dialog/product-dialog/product-dialog.component';
 import { SnackBarService } from 'src/app/shared/services/snack-bar.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import {FormControl, FormsModule, } from '@angular/forms';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import * as _moment from 'moment';
+import {default as _rollupMoment, Moment} from 'moment';
+import { MatDatepicker } from '@angular/material/datepicker';
+import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 
+const moment = _rollupMoment || _moment;
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'MM/YYYY',
+  },
+  display: {
+    dateInput: 'MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.scss']
+  styleUrls: ['./shop.component.scss'],
+  providers:[{
+    provide: DateAdapter,
+    useClass: MomentDateAdapter,
+    deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+  },
+  {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},],
+  encapsulation:ViewEncapsulation.None,
 })
 export class ShopComponent implements OnInit{
   isAdminUser:boolean = false
@@ -38,6 +64,16 @@ export class ShopComponent implements OnInit{
     ){}
 
     cteIDs:string[]=[];
+
+    date = new FormControl(moment());
+
+  setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>) {
+    const ctrlValue = this.date.value!;
+    ctrlValue.month(normalizedMonthAndYear.month());
+    ctrlValue.year(normalizedMonthAndYear.year());
+    this.date.setValue(ctrlValue);
+    datepicker.close();
+  }
 
    ngOnInit(): void{
     this.loggedUser = JSON.parse(localStorage.getItem('user') as string) as firebase.default.User

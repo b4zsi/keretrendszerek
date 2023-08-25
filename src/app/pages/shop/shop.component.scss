@@ -1,17 +1,17 @@
 div{
   width: 100%;
-    //background-color: rgba($color: #5b7C99, $alpha: 0.8);
-    background-image: url('../../assets/main-back.jpeg');
+    //background-image: url('../../assets/main-back.jpeg');
     text-align: left;
     background-size: cover;
-    opacity: 0.8;
 }
  .text{
   margin-top: 20px;
   background-image: none;
   font-size: 40px;
   margin-top: 20px;
-  margin-left: 450px;
+  margin-left: 50px;
+  padding: 15px;
+  text-align: left;
 
 }
 mat-card{
@@ -24,30 +24,46 @@ mat-card{
     align-self: center;
     margin-left: 225px;
     font-size: 30px;
+    background-color: rgba($color: #525e69, $alpha: 0.8);
 }
-
-.button-1 {
-  position: absolute;
-  left: 250px;
-  bottom: 30px;
-  padding: 20px;
-
-}
-.button-2 {
-  position: absolute;
-  left: 100px;
-  bottom: 30px;
-  padding: 20px;
-
+.button {
+  float: right;
 }
 img{
   display: block;
   margin-left: auto;
   float: right;
+  border-radius: 20px;
+  border: 2px black solid;
 }
 
 .cheaper-product {
-  border: 3px solid red;
+  border: 3px solid orange;
+}
+.search {
+  text-align: center;
+  margin-left: 40%;
+  margin-top: 2%;
+  border-radius: 20px;
+  width: 250px;
+  height: 30px;
+  font-size: 20px;
+  outline: none;
+  border: 1px solid #00B4CC;
 }
 
+.example-month-picker .mat-calendar-period-button {
+  pointer-events: none;
+}
 
+.example-month-picker .mat-calendar-arrow {
+  display: none;
+}
+.addButton{
+  margin-left: 45%;
+  justify-content: center;
+}
+p{
+  padding: 15px;
+  padding-right: 50px;
+}

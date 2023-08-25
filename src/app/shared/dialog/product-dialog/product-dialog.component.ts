@@ -25,6 +25,8 @@ export class ProductDialogComponent{
   productForm = new FormGroup({
     nev: new FormControl('', Validators.required),
     ar: new FormControl('', Validators.required),
+    evjarat:new FormControl('', Validators.required),
+    kilometeroraAllas:new FormControl('',Validators.required),
     image_url: new FormControl('', Validators.required),
   });
 
@@ -44,8 +46,10 @@ save() {
   const image : Image = {
       id:autoId,
       image_url: this.upload!.name,
-      leiras:this.productForm.get('nev')?.value as string,
+      nev:this.productForm.get('nev')?.value as string,
       ar: parseInt(this.productForm.get('ar')!.value as string),
+      evjarat:parseInt(this.productForm.get('evjarat')!.value as string),
+      kilometeroraAllas:parseInt(this.productForm.get('kilometeroraAllas')!.value as string),
       download_url:imageDownloadURL
   }
     this.firestore.collection('images').doc(autoId).set(image).then(()=>{

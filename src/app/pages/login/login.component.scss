@@ -4,8 +4,8 @@ div {
     justify-content: center;
     text-align: center;
     height: 100%;
-    background-color: rgba($color: #8c92ac, $alpha: 0.8);
-    background-position: 100%;
+    background-image: url('../../assets/main-back.jpeg');
+    background-position: 10%;
 }
 
 p{
@@ -38,5 +38,5 @@ h1{
     font-size: 35px;
     color: white;
     font-family: main;
-    
+
 }

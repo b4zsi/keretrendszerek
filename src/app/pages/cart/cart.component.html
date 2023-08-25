@@ -1,7 +1,7 @@
 <html>
-<div class="container">
-  <h2>Kosár</h2>
-  <!-- <table class="table">
+  <div class="container">
+    <h2>Kosár</h2>
+    <!-- <table class="table">
     <thead *ngIf="cart">
       <tr>
         <th>Név</th>
@@ -39,49 +39,60 @@
     </tfoot>
   </table> -->
 
-  <mat-table [dataSource]="cart1">
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef>Név</mat-header-cell>
-      <mat-cell *matCellDef="let item">{{ item.name }}</mat-cell>
-    </ng-container>
+    <mat-table [dataSource]="cart1">
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Név</mat-header-cell>
+        <mat-cell *matCellDef="let item">{{ item.name }}</mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="price">
-      <mat-header-cell *matHeaderCellDef>Ár</mat-header-cell>
-      <mat-cell *matCellDef="let item">{{ item.price }} Ft</mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef>Ár</mat-header-cell>
+        <mat-cell *matCellDef="let item">{{ item.price }} Ft</mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="quantity">
-      <mat-header-cell *matHeaderCellDef>Mennyiség</mat-header-cell>
-      <mat-cell *matCellDef="let item">
-        <button mat-button class="btn btn-primary" (click)="decrement(item)">-</button>
-        <span class="mx-2">{{ item.quantity }}</span>
-        <button mat-button class="btn-primary plus" (click)="increment(item)"><mat-icon>add</mat-icon></button>
-      </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="quantity">
+        <mat-header-cell *matHeaderCellDef>Mennyiség</mat-header-cell>
+        <mat-cell *matCellDef="let item">
+          <button mat-button class="btn btn-primary" (click)="decrement(item)">
+            -
+          </button>
+          <span class="mx-2">{{ item.quantity }}</span>
+          <button mat-button class="btn-primary plus" (click)="increment(item)">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
 
-    <ng-container matColumnDef="total">
-      <mat-header-cell *matHeaderCellDef>Összesen</mat-header-cell>
-      <mat-cell *matCellDef="let item">{{ item.price * item.quantity }} Ft</mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="total">
+        <mat-header-cell *matHeaderCellDef>Összesen</mat-header-cell>
+        <mat-cell *matCellDef="let item"
+          >{{ item.price * item.quantity }} Ft</mat-cell
+        >
+      </ng-container>
 
-    <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef></mat-header-cell>
-      <mat-cell *matCellDef="let item">
-        <button mat-button class="btn btn-sm btn-danger" (click)="remove(item)">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </mat-cell>
-    </ng-container>
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let item">
+          <button
+            mat-button
+            class="btn btn-sm btn-danger"
+            (click)="remove(item)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
 
-  <div class="text-center mt-3" *ngIf="cart1?.length === 0">A kosarad jelenleg üres</div>
+    <div class="text-center mt-3" *ngIf="cart1?.length === 0">
+      A kosarad jelenleg üres
+    </div>
 
-  <div class="text-right" *ngIf="cart.length > 0">
-    <strong>Összesen:</strong> {{ getTotal() }} Ft
+    <div class="text-right" *ngIf="cart.length > 0">
+      <strong>Összesen:</strong> {{ getTotal() }} Millió Ft
+    </div>
   </div>
-</div>
 </html>
-

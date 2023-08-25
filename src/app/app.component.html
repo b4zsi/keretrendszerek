@@ -28,22 +28,18 @@
             <a routerLink="/register">Regisztráció</a>
           </li>
           <li *ngIf="loggedInUser">
-            <a routerLink="/shop">Bolt</a>
+            <a routerLink="/shop">Áruház</a>
           </li>
           <li *ngIf="loggedInUser">
             <a routerLink="/cart">Kosár</a>
-          </li>
-          <li *ngIf="loggedInUser">
-            <a routerLink="/rendelesek" >Rendelések más felhasználóktól</a>
-          </li>
-          <li *ngIf="loggedInUser">
-            <a routerLink="/comments" >Kommentek</a>
           </li>
           <li>
             <a routerLink="/contact">Kapcsolat</a>
           </li>
           <li *ngIf="loggedInUser">
-            <a routerLink="/login" (click)="logout()"><mat-icon>logout</mat-icon></a>
+            <a routerLink="/login" (click)="logout()"
+              ><mat-icon>logout</mat-icon></a
+            >
           </li>
         </ul>
       </div>

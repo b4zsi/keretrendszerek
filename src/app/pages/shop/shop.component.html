@@ -1,30 +1,80 @@
 <div>
-  <mat-list style="line-height: 10px" *ngIf="this.isPageLoaded">
-    <mat-card *ngFor="let imageObject of this.galleryObject"
-    [ngClass]="{'cheaper-product': cteIDs.includes(imageObject.id)}">
-      <div class="text">
-        {{ imageObject.leiras }}
-      </div>
-      <br />
-      <div class="text">
-        {{ imageObject.ar }} Ft
-      </div>
-      <img
-        [src]="imageObject.download_url"
-        alt="af"
-        width="300px"
-        height="200px"
-      />
+  <!-- <mat-form-field>
+    <mat-label>Month and Year</mat-label>
+    <input matInput [matDatepicker]="dp" [formControl]="date" />
+    <mat-hint>MM/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+    <mat-datepicker
+      #dp
+      startView="multi-year"
+      (monthSelected)="setMonthAndYear($event, dp)"
+      panelClass="example-month-picker"
+    >
+    </mat-datepicker>
+  </mat-form-field> -->
 
-        <button mat-raised-button (click)="toCart(imageObject.ar, imageObject.leiras)">Kosárba</button>
-        <button mat-raised-button color="warn" *ngIf="isAdminUser"
-        (click)="deleteProduct(imageObject.download_url, imageObject.id)"
-        class="button-1">Törlés</button>
-      <button mat-raised-button *ngIf="isAdminUser" class="button-2"
-      (click)="openDialog(imageObject.leiras, imageObject.ar)">Szerkesztés</button>
+  <mat-list style="line-height: 10px" *ngIf="this.isPageLoaded">
+    <mat-card
+      *ngFor="let imageObject of this.galleryObject"
+      [ngClass]="{ 'cheaper-product': cteIDs.includes(imageObject.id) }"
+    >
+      <table>
+        <tr>
+          <td>
+            <p>{{ imageObject.nev }}</p>
+            <p>Ár: {{ imageObject.ar }} Ft</p>
+            <p>Évjárat: {{ imageObject.evjarat }}</p>
+            <p>Kilóméter óra állás: {{ imageObject.kilometeroraAllas }} KM</p>
+          </td>
+          <td>
+            <img
+              [src]="imageObject.download_url"
+              alt="auto"
+              width="300px"
+              height="200px"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button
+              mat-raised-button
+              (click)="toCart(imageObject.ar, imageObject.nev)"
+              *ngIf="!isAdminUser"
+              class="button"
+            >
+              Lefoglalás
+            </button>
+            <button
+              mat-raised-button
+              color="warn"
+              *ngIf="isAdminUser"
+              (click)="deleteProduct(imageObject.download_url, imageObject.id)"
+              class="button"
+            >
+              Törlés
+            </button>
+            <br />
+          </td>
+          <td>
+            <button
+              mat-raised-button
+              *ngIf="isAdminUser"
+              (click)="openDialog(imageObject.nev, imageObject.ar)"
+            >
+              Szerkesztés
+            </button>
+          </td>
+        </tr>
+      </table>
     </mat-card>
   </mat-list>
-  <button mat-raised-button *ngIf="isAdminUser" (click)="openDialog('',5000)">Hozzáadás</button>
-
+  <button
+    class="addButton"
+    mat-raised-button
+    *ngIf="isAdminUser"
+    (click)="openDialog('', 5000)"
+  >
+    Hozzáadás
+  </button>
 </div>
-
