@@ -21,7 +21,6 @@ export class ProductService {
   }
 
   uploadProduct(){
-    console.log("create");
   }
 
   deleteProduct(download_url : string, id:string) {
@@ -41,8 +40,6 @@ export class ProductService {
   }
 
   modifyProduct(){
-    console.log("update")
-    //leirast arat es nevet lehet modositani
   }
 
 }

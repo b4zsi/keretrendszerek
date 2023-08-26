@@ -28,7 +28,6 @@ export class CommentsComponent {
       comment: ['', [Validators.required, Validators.minLength(20)]],
     });
       this.comments = this.CommentService.getAll();
-     console.log(this.comments)
   }
 
   onSubmit() {
